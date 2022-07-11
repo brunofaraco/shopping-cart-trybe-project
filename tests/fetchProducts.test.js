@@ -5,40 +5,44 @@ const computadorSearch = require('../mocks/search');
 describe('1 - Teste a função fetchProducts', () => {
 
   test('if fetchProducts is a function', () => {
-    const test = typeof(fetchProducts);
+    const tested = typeof(fetchProducts);
     const expected = 'function';
-    expect(test).toEqual(expected);
+    expect(tested).toEqual(expected);
   });
 
-  test('', () => {
-
+  test('if "fetch" is called one time when you call "fetchProducts("computador")"', async () => {
+    expect.assertions(1);
+    fetchProducts('computador');
+    expect(fetch).toHaveBeenCalledTimes(1);
   });
 
-  test('', () => {
+  // test('', () => {
+  //   const tested = ;
+  //   const expected ;
 
-  });
+  // });
+  
+  // test('', () => {
+  //   const tested = ;
+  //   const expected ;
 
-  test('', () => {
+  // });
 
-  });
+  // test('', () => {
+  //   const tested = ;
+  //   const expected ;
 
-  test('', () => {
+  // });
 
-  });
+  // test('', () => {
+  //   const tested = ;
+  //   const expected ;
 
-  test('', () => {
+  // });
 
-  });
+  // test('', () => {
+  //   const tested = ;
+  //   const expected ;
 
-  test('', () => {
-
-  });
-
-  test('', () => {
-
-  });
-
-  test('', () => {
-
-  });
+  // });
 });
