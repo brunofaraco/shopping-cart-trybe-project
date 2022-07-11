@@ -16,14 +16,16 @@ describe('1 - Teste a função fetchProducts', () => {
     expect(fetch).toHaveBeenCalledTimes(1);
   });
 
-  // test('', () => {
-  //   const tested = ;
-  //   const expected ;
-
-  // });
+  test('if fetch URL is :https://api.mercadolibre.com/sites/MLB/search?q=computador', async () => {
+    expect.assertions(1);
+    await fetchProducts('computador');
+    const tested = fetch;
+    const expected = 'https://api.mercadolibre.com/sites/MLB/search?q=computador';
+    expect(tested).toHaveBeenCalledWith(expected);
+  });
   
-  // test('', () => {
-  //   const tested = ;
+  // test('if fetchProducts("computador") returns the same that is into "computadorSearch"', () => {
+  //   const tested = fetchProducts("computador");
   //   const expected ;
 
   // });
