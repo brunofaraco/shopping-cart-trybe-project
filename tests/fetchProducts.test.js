@@ -30,21 +30,9 @@ describe('1 - Teste a função fetchProducts', () => {
     expect(tested).toEqual(computadorSearch);
   });
 
-  // test('', () => {
-  //   const tested = ;
-  //   const expected ;
-
-  // });
-
-  // test('', () => {
-  //   const tested = ;
-  //   const expected ;
-
-  // });
-
-  // test('', () => {
-  //   const tested = ;
-  //   const expected ;
-
-  // });
+  test('if fetchProducts() returns the expected error', async () => {
+    const tested = await fetchProducts();
+    const expected = new Error('You must provide and url');
+    expect(tested).toEqual(expected);
+  });
 });
