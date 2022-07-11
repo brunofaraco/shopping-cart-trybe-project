@@ -24,11 +24,11 @@ describe('1 - Teste a função fetchProducts', () => {
     expect(tested).toHaveBeenCalledWith(expected);
   });
   
-  // test('if fetchProducts("computador") returns the same that is into "computadorSearch"', () => {
-  //   const tested = fetchProducts("computador");
-  //   const expected ;
-
-  // });
+  test('if fetchProducts("computador") returns the same that is into "computadorSearch"', async () => {
+    expect.assertions(1)
+    const tested = await fetchProducts("computador");
+    expect(tested).toEqual(computadorSearch);
+  });
 
   // test('', () => {
   //   const tested = ;
