@@ -24,11 +24,11 @@ describe('2 - Teste a função fetchItem', () => {
     expect(tested).toHaveBeenCalledWith(expected);
   });
   
-  // test('if fetchItems("MLB1615760527") returns the same that is into "item"', async () => {
-  //   expect.assertions(1)
-  //   const tested = await fetchItems('MLB1615760527');
-  //   expect(tested).toEqual(item);
-  // });
+  test('if fetchItems("MLB1615760527") returns the same that is into "item"', async () => {
+    expect.assertions(1)
+    const tested = await fetchItem('MLB1615760527');
+    expect(tested).toEqual(item);
+  });
 
   // test('if fetchItems() returns the expected error', async () => {
   //   const tested = await fetchItems();
