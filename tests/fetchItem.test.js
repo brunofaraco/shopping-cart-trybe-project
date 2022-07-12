@@ -30,9 +30,9 @@ describe('2 - Teste a função fetchItem', () => {
     expect(tested).toEqual(item);
   });
 
-  // test('if fetchItems() returns the expected error', async () => {
-  //   const tested = await fetchItems();
-  //   const expected = new Error('You must provide and url');
-  //   expect(tested).toEqual(expected);
-  // });
+  test('if fetchItems() returns the expected error', async () => {
+    const tested = await fetchItem();
+    const expected = new Error('You must provide and url');
+    expect(tested).toEqual(expected);
+  });
 });
