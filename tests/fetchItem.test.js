@@ -16,13 +16,13 @@ describe('2 - Teste a função fetchItem', () => {
     expect(fetch).toHaveBeenCalledTimes(1);
   });
 
-  // test('if fetch URL is : https://api.mercadolibre.com/items/MLB1615760527', async () => {
-  //   expect.assertions(1);
-  //   await fetchItems('MLB1615760527');
-  //   const tested = fetch;
-  //   const expected = 'https://api.mercadolibre.com/items/MLB1615760527';
-  //   expect(tested).toHaveBeenCalledWith(expected);
-  // });
+  test('if fetch URL is : https://api.mercadolibre.com/items/MLB1615760527', async () => {
+    expect.assertions(1);
+    await fetchItem('MLB1615760527');
+    const tested = fetch;
+    const expected = 'https://api.mercadolibre.com/items/MLB1615760527';
+    expect(tested).toHaveBeenCalledWith(expected);
+  });
   
   // test('if fetchItems("MLB1615760527") returns the same that is into "item"', async () => {
   //   expect.assertions(1)
