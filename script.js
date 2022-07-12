@@ -27,9 +27,9 @@ const createProductItemElement = ({ sku, name, image }) => {
 
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
-const cartItemClickListener = (event) => {
-  // coloque seu código aqui
-};
+  // requisito 5
+
+const cartItemClickListener = ({ target }) => target.parentNode.removeChild(target);
 
 // sku = id | name = title | salePrice = price
 const createCartItemElement = ({ sku, name, salePrice }) => {
@@ -60,18 +60,23 @@ const getComputerResults = async () => {
 
 const addToCart = async ({ target }) => {
   if (target.classList.contains('item__add')) {
-    const cartItem = document.querySelector('.cart__items');
     const targetID = getSkuFromProductItem(target.parentNode);
+    
     const targetObject = await fetchItem(targetID);
     const { id: sku, title: name, price: salePrice } = targetObject;
+    
     const itemLi = createCartItemElement({ sku, name, salePrice });
-    cartItem.appendChild(itemLi);
+    const cartItemOl = document.querySelector('.cart__items');
+    cartItemOl.appendChild(itemLi);
   }
 };
 
+const sectionItemsListener = () => {
 const itemsContainer = document.querySelector('.items');
 itemsContainer.addEventListener('click', addToCart);
-
+};
+  
 window.onload = async () => {
   await getComputerResults();
+  sectionItemsListener();
 };
