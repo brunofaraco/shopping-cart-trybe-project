@@ -10,11 +10,11 @@ describe('2 - Teste a função fetchItem', () => {
     expect(tested).toEqual(expected);
   });
 
-  // test('if "fetch" is called one time when you call "fetchItems("MLB1615760527")"', async () => {
-  //   expect.assertions(1);
-  //   await fetchItem('MLB1615760527');
-  //   expect(fetch).toHaveBeenCalledTimes(1);
-  // });
+  test('if "fetch" is called one time when you call "fetchItems("MLB1615760527")"', async () => {
+    expect.assertions(1);
+    await fetchItem('MLB1615760527');
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
 
   // test('if fetch URL is : https://api.mercadolibre.com/items/MLB1615760527', async () => {
   //   expect.assertions(1);
