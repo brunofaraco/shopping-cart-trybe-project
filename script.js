@@ -44,7 +44,10 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
 const getComputerResults = async () => {
   const computerPromise = await fetchProducts('computador');
   const computerPromiseResults = computerPromise.results;
+  
+  // Elemento pai, onde serão postos todos os itens do array pego na const "computerPromiseResults"
   const sectionItems = document.querySelector('.items');
+
   computerPromiseResults.forEach(({ id: sku, thumbnail: image, title: name }) => {
     const productCreated = createProductItemElement({ sku, name, image });
     sectionItems.appendChild(productCreated);
