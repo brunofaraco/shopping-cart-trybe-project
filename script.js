@@ -12,6 +12,7 @@ const createCustomElement = (element, className, innerText) => {
   return e;
 };
 
+// sku = id | name = title | image = thumbnail
 const createProductItemElement = ({ sku, name, image }) => {
   const section = document.createElement('section');
   section.className = 'item';
@@ -30,6 +31,7 @@ const cartItemClickListener = (event) => {
   // coloque seu código aqui
 };
 
+// sku = id | name = title | salePrice = price
 const createCartItemElement = ({ sku, name, salePrice }) => {
   const li = document.createElement('li');
   li.className = 'cart__item';
@@ -39,7 +41,7 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
 };
 
 // Minhas funções
-// requisito 2
+  // requisito 2
 
 const getComputerResults = async () => {
   const computerPromise = await fetchProducts('computador');
@@ -48,11 +50,28 @@ const getComputerResults = async () => {
   // Elemento pai, onde serão postos todos os itens do array pego na const "computerPromiseResults"
   const sectionItems = document.querySelector('.items');
 
-  computerPromiseResults.forEach(({ id: sku, thumbnail: image, title: name }) => {
+  computerPromiseResults.forEach(({ id: sku, title: name, thumbnail: image }) => {
     const productCreated = createProductItemElement({ sku, name, image });
     sectionItems.appendChild(productCreated);
   });
 };
+
+  // requisito 4
+
+const addToCart = async ({ target }) => {
+  if (target.classList.contains('item__add')) {
+    const cartItem = document.querySelector('.cart__items');
+    const targetID = getSkuFromProductItem(target.parentNode);
+    const targetObject = await fetchItem(targetID);
+    const { id: sku, title: name, price: salePrice } = targetObject;
+    const itemLi = createCartItemElement({ sku, name, salePrice });
+    cartItem.appendChild(itemLi);
+  }
+};
+
+const itemsContainer = document.querySelector('.items');
+itemsContainer.addEventListener('click', addToCart);
+
 window.onload = async () => {
   await getComputerResults();
 };
