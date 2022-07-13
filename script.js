@@ -29,7 +29,7 @@ const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').inn
 
   // requisito 5
 
-const cartItemClickListener = ({ target }) => target.parentNode.removeChild(target);
+const cartItemClickListener = ({ target }) => target.remove();
 
 // sku = id | name = title | salePrice = price
 const createCartItemElement = ({ sku, name, salePrice }) => {
