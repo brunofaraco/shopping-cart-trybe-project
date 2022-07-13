@@ -32,7 +32,7 @@ const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').inn
   // requisito 5
 
 const cartItemClickListener = ({ target }) => {
-  if (target.classList.contains('cart__item')) {
+  if (target.className === 'cart__item') {
   target.remove();
 
   // parte do requisito 8
