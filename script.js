@@ -32,10 +32,12 @@ const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').inn
   // requisito 5
 
 const cartItemClickListener = ({ target }) => {
+  if (target.classList.contains('cart__item')) {
   target.remove();
 
   // parte do requisito 8
   saveCartItems(cartItemsOl.innerHTML);
+}
 };
 
 // sku = id | name = title | salePrice = price
@@ -47,7 +49,7 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
   return li;
 };
 
-// Minhas funções
+// MINHAS FUNÇÕES
   // requisito 2
 
 const getComputerResults = async () => {
@@ -77,7 +79,6 @@ const addToCart = async ({ target }) => {
 
     // adição para o requisito 8
     saveCartItems(cartItemsOl.innerHTML);
-    console.log(saveCartItems(cartItemsOl.innerHTML));
   }
 };
 
@@ -89,15 +90,39 @@ itemsContainer.addEventListener('click', addToCart);
 // requisito 8
 
 const loadCartItems = () => {
-  if (localStorage.getItem('cartItems').lenght !== 0) {
+  if (localStorage.getItem('cartItems')) {
   cartItemsOl.innerHTML = getSavedCartItems();
   cartItemsOl.addEventListener('click', cartItemClickListener);
-  // console.log(cartItemsOl.innerHTML = getSavedCartItems());
 }
 };
-  
+
+// requisito 10
+
+const clearCart = () => {
+  cartItemsOl.innerHTML = '';
+};
+
+const buttonClicker = () => {
+  const emptyCartButton = document.querySelector('.empty-cart');
+  emptyCartButton.addEventListener('click', clearCart);
+};
+
+// requisito 11
+
+// const insertLoading = () => {
+//   const loadingDiv = createCustomElement('div', 'loading', 'carregando...');
+//   loadingDiv
+// };
+
+// const removeLoading = () => {
+
+// };
+
 window.onload = async () => {
+  // insertLoading();
   await getComputerResults();
+  // removeLoading();
   sectionItemsListener();
   loadCartItems();
+  buttonClicker();
 };
