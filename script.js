@@ -109,19 +109,20 @@ const buttonClicker = () => {
 
 // requisito 11
 
-// const insertLoading = () => {
-//   const loadingDiv = createCustomElement('div', 'loading', 'carregando...');
-//   loadingDiv
-// };
+const insertLoading = () => {
+  const loadingDiv = createCustomElement('div', 'loading', 'carregando...');
+  const container = document.querySelector('.container');
+  container.prepend(loadingDiv);
+};
 
-// const removeLoading = () => {
-
-// };
+const removeLoading = () => {
+  document.querySelector('.loading').remove();
+};
 
 window.onload = async () => {
-  // insertLoading();
+  insertLoading();
   await getComputerResults();
-  // removeLoading();
+  removeLoading();
   sectionItemsListener();
   loadCartItems();
   buttonClicker();
