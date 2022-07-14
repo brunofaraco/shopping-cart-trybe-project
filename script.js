@@ -29,6 +29,20 @@ const createProductItemElement = ({ sku, name, image }) => {
 
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
+ // requisito 9
+
+ const pricesSum = () => {
+  const cartItemsChildren = [...document.querySelectorAll('.cart__item')];
+  const totalPrice = cartItemsChildren.reduce((acc, child) => acc + Number(child.innerText
+    .split('|')[2].split('$')[1]), 0);
+    return totalPrice;
+};
+
+const totalPriceAttribution = () => {
+  const totalPriceDiv = document.querySelector('.total-price');
+  totalPriceDiv.innerText = pricesSum();
+};
+
   // requisito 5
 
 const cartItemClickListener = ({ target }) => {
@@ -37,6 +51,9 @@ const cartItemClickListener = ({ target }) => {
 
   // parte do requisito 8
   saveCartItems(cartItemsOl.innerHTML);
+
+  // parte do requisito 9
+  totalPriceAttribution();
 }
 };
 
@@ -64,7 +81,7 @@ const getComputerResults = async () => {
     sectionItems.appendChild(productCreated);
   });
 };
-
+ 
   // requisito 4
 
 const addToCart = async ({ target }) => {
@@ -79,6 +96,9 @@ const addToCart = async ({ target }) => {
 
     // adição para o requisito 8
     saveCartItems(cartItemsOl.innerHTML);
+
+    // adição para o requisito 9
+    totalPriceAttribution();
   }
 };
 
@@ -126,4 +146,6 @@ window.onload = async () => {
   sectionItemsListener();
   loadCartItems();
   buttonClicker();
+  totalPriceAttribution();
+  // console.log(pricesSum());
 };
