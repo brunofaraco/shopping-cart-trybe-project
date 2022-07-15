@@ -30,13 +30,15 @@ const createProductItemElement = ({ sku, name, image }) => {
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
  // requisito 9
-
- const pricesSum = () => {
-  const cartItemsChildren = [...document.querySelectorAll('.cart__item')];
-  const totalPrice = cartItemsChildren.reduce((acc, child) => acc + Number(child.innerText
+ 
+ const pricesSum = () => [...document.querySelectorAll('.cart__item')]
+  .reduce((acc, child) => acc + Number(child.innerText
     .split('|')[2].split('$')[1]), 0);
-    return totalPrice;
-};
+
+ // const cartItemsChildren = [...document.querySelectorAll('.cart__item')];
+  // const totalPrice = cartItemsChildren.reduce((acc, child) => acc + Number(child.innerText
+  //   .split('|')[2].split('$')[1]), 0);
+  //   return totalPrice;
 
 const totalPriceAttribution = () => {
   const totalPriceDiv = document.querySelector('.total-price');
@@ -120,6 +122,7 @@ const loadCartItems = () => {
 
 const clearCart = () => {
   cartItemsOl.innerHTML = '';
+  totalPriceAttribution();
 };
 
 const buttonClicker = () => {
