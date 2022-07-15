@@ -33,7 +33,7 @@ const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').inn
  
  const pricesSum = () => [...document.querySelectorAll('.cart__item')]
   .reduce((acc, child) => acc + Number(child.innerText
-    .split('|')[2].split('$')[1]), 0);
+    .split('$')[1]), 0);
 
  // const cartItemsChildren = [...document.querySelectorAll('.cart__item')];
   // const totalPrice = cartItemsChildren.reduce((acc, child) => acc + Number(child.innerText
@@ -68,7 +68,6 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
   return li;
 };
 
-// MINHAS FUNÇÕES
   // requisito 2
 
 const getComputerResults = async () => {
@@ -98,7 +97,6 @@ const addToCart = async ({ target }) => {
 
     // adição para o requisito 8
     saveCartItems(cartItemsOl.innerHTML);
-
     // adição para o requisito 9
     totalPriceAttribution();
   }
@@ -112,10 +110,8 @@ itemsContainer.addEventListener('click', addToCart);
 // requisito 8
 
 const loadCartItems = () => {
-  if (localStorage.getItem('cartItems')) {
   cartItemsOl.innerHTML = getSavedCartItems();
   cartItemsOl.addEventListener('click', cartItemClickListener);
-}
 };
 
 // requisito 10
@@ -123,6 +119,7 @@ const loadCartItems = () => {
 const clearCart = () => {
   cartItemsOl.innerHTML = '';
   totalPriceAttribution();
+  saveCartItems(cartItemsOl.innerHTML);
 };
 
 const buttonClicker = () => {
